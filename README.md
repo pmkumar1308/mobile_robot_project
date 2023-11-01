@@ -1,4 +1,11 @@
-## Robot Package Template
+This repo contains coding done while following the tutorials offered on the Articulated Robotics youtube 
+channel in the [Building a mobile robot playlist](https://www.youtube.com/playlist?list=PLunhqkrRNRhYAffV8JDiFOatQXuU-NnxT). Only the 
+the simulation part of the tutorials is implemented.
+
+The following concepts were learnt by following this tutorial:
+1. Defining urdf files and compiling them through xacro
+2. Running a mobile robot in a Gazebo simulation through a Gazebo differential drive plugin
+3. Concepts of LiDARs and adding Gazebo ray_sensor plugins to simulate a LiDAR in the simulator
 
 # Run the robot in Gazebo:
 
@@ -25,8 +32,15 @@ ros2 run gazebo_ros spawn_entity -topic robot_description -entity <some-name-for
 
 ### Method 2: through a launch file
 
-A launch file `launch_sim.launch.py` contains all the above steps, to launch it:
+A launch file `launch_sim.launch.py` contains all the above steps, to launch the simulation with a spawned robot in a pre-defined world(Here the `obstacles.world` file in the worlds folder)
 
 ```bash
-ros2 launch mobile_robot_project launch_sim.launch.py
+ros2 launch mobile_robot_project launch_sim.launch.py world:=./src/mobile_robot_project/worlds/obstacles.world
+```
+
+## Moving the robot
+The robot can be moved through the keyboard using the  `teleop_twist_keyboard` node in `teleop_twist_keyboard` package. It publishes the robot linear and angular velocities to the `/cmd_vel` topic
+
+```bash
+ros2 run teleop_twist_keyboard teleop_twist_keyboard
 ```

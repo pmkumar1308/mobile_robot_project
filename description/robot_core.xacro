@@ -18,6 +18,10 @@
         <color rgba="0 0 0 1"/>
     </material>
 
+    <material name="red">
+        <color rgba="1 0 0 1"/>
+    </material>
+
 <!-- BASE LINK (center of rotation of the wheels)--> 
     <link name="base_link">
 
